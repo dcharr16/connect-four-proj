@@ -1,16 +1,24 @@
 /*-------------------------------- Constants --------------------------------*/
 
-const winningCombos = []
+
+const columnCombos = [r1c1, r1c2, r1c3, r1c4, r1c4, r1c5, r1c6]
+// if first 2 objects = each other if 4in a row >= abs[4]
+
+
 
 
 
 
 
 /*-------------------------------- Variables --------------------------------*/
-let winner, message, board, playerTurn
+let winner, 
+message, 
+board, 
+playerTurn = 1
 
 
 /*------------------------ Cached Element References ------------------------*/
+
 const columnSelect = document.querySelectorAll(".top-square")
 
 columnSelect.forEach(column=> column.addEventListener("mouseover", columnHighlight))
@@ -37,23 +45,28 @@ function init(){
           null, null, null, null, null, null, null,
           null, null, null, null, null, null, null]
 
+  playerTurn = 1
+  winner = null
 }
 
 function render (){
 
-  for (let
 }
 function columnHighlight(evt){
 evt.target.style.background = "red"
+}
+
+function dropChip(){
+
 }
 
 function reset(){
 init()
 }
 
-function playerTurn(){
-  turn *= turn *-1
-}
+// function playerTurn(){
+//   turn *= turn *-1
+// }
 
 
 //Create a 7 x 6 grid 

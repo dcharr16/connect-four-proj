@@ -9,6 +9,7 @@ height: 100vh;
 display: flex;
 flex-direction: column;
 align-items: center;
+background-color: aqua;
 }
  h1 {
    text-align: center;
@@ -31,11 +32,12 @@ div {
   border-width: 4px;
 }
 .top-square {
-  border: 3px solid white;
+  border: 0 solid white;
   font-size: 8vmin;
   text-align: center;
   vertical-align: middle;
-  background-color: white;
+  background-color: aqua;
+  border-radius: 50%;
 
 }
 #reset-button {
