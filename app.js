@@ -9,7 +9,13 @@ let winner, message, board, playerTurn
 
 
 /*------------------------ Cached Element References ------------------------*/
+const columnSelect = document.querySelectorAll(".top-square")
 
+columnSelect.forEach(column=> column.addEventListener("mouseover", columnHighlight))
+const moveCommit = document.getElementById("r0c1")
+moveCommit.addEventListener('click', function(dropChip){
+  console.log(dropChip)
+})
 
 
 /*----------------------------- Event Listeners -----------------------------*/
@@ -17,8 +23,28 @@ let winner, message, board, playerTurn
 
 
 
-/*-------------------------------- Functions --------------------------------*/
 
+/*-------------------------------- Functions --------------------------------*/
+init()
+function init(){
+  board = [null, null, null, null, null, null, null,
+          null, null, null, null, null, null, null,
+          null, null, null, null, null, null, null,
+          null, null, null, null, null, null, null,
+          null, null, null, null, null, null, null,
+          null, null, null, null, null, null, null,
+          null, null, null, null, null, null, null]
+
+}
+
+function render (){}
+function columnHighlight(evt){
+evt.target.style.background = "red"
+}
+
+function reset(){
+init()
+}
 
 
 //Create a 7 x 6 grid 
