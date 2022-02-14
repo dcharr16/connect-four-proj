@@ -1,5 +1,7 @@
 /*-------------------------------- Constants --------------------------------*/
 
+const winningCombos = []
+
 
 
 
@@ -37,13 +39,20 @@ function init(){
 
 }
 
-function render (){}
+function render (){
+
+  for (let
+}
 function columnHighlight(evt){
 evt.target.style.background = "red"
 }
 
 function reset(){
 init()
+}
+
+function playerTurn(){
+  turn *= turn *-1
 }
 
 

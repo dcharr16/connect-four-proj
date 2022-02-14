@@ -19,6 +19,8 @@ grid-template-rows: repeat(7, 10vmin);
 grid-template-columns: repeat(7, 10vmin);
 grid-gap: 0vmin;
 margin: 0 100px;
+background-color: aqua;
+width: 547px
 }
 
 div {
@@ -33,6 +35,7 @@ div {
   font-size: 8vmin;
   text-align: center;
   vertical-align: middle;
+  background-color: white;
 
 }
 #reset-button {
@@ -41,4 +44,9 @@ div {
 h2 {
   text-align: right;
 padding-top: 0px;
+}
+
+.circ {
+  border-radius: 50%;
+  background-color: white;
 }
