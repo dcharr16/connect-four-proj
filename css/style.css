@@ -48,3 +48,6 @@ div {
   vertical-align: middle;
 
 }
+#reset-button {
+  margin: 0 345px;
+}
