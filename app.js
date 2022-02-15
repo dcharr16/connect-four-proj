@@ -1,8 +1,8 @@
 /*-------------------------------- Constants --------------------------------*/
 
 
-// const winningCombos = 
-//                       Rows
+// const winningCombos = [
+// //                       Rows
 //                       [0,1,2,3]
 //                       [1,2,3,4]
 //                       [2,3,4,5]
@@ -33,7 +33,7 @@
 //                       [37,38,39,40]
 //                       [38,39,40,41]
 
-//                       columns
+//                       // columns
 //                       [0, 7, 14, 21]
 //                       [7, 14, 21, 28]
 //                       [14,21,28,35]
@@ -62,11 +62,11 @@
 //                       [13,20,27,34]
 //                       [20,27,34,41]
 
-//                        diagnals
+//                       //  diagnals
 //                        [0,8,16,24]
 //                        [8,16,24,32]
 //                        [16,24,32,40]
-// 
+
 //                        [1,9,17,25]
 //                        [9,17,25,33]
 //                        [17,25,33,41]
@@ -87,31 +87,44 @@
 //                        [6, 12, 18, 24]
 //                        [12, 18, 24, 30]
 //                        [18, 24, 30, 36]
-
-
-
-
-
+// ]
 
 
 
 /*-------------------------------- Variables --------------------------------*/
 let winner, 
 message, 
-board, 
+boardArray, 
 playerTurn = 1
 
 
 /*------------------------ Cached Element References ------------------------*/
 const messageEl = document.getElementById("message")
-
+const circles = document.querySelectorAll(".circ")
 const columnSelect = document.querySelectorAll(".top-square")
 
 columnSelect.forEach(column=> column.addEventListener("mouseover", columnHighlight))
-const moveCommit = document.getElementById("r0c1")
-moveCommit.addEventListener('click', function(dropChip){
-  console.log(dropChip)
-})
+
+circles.forEach(function(circle){circle.addEventListener("click", handleClick)});
+
+const columnOneClick = document.getElementById("r0c1")
+
+const columnTwoClick = document.getElementById("r0c2")
+
+const columnThreeClick = document.getElementById("r0c3")
+
+const columnFourClick = document.getElementById("r0c4")
+
+const columnFiveClick = document.getElementById("r0c5")
+
+const columnSixClick = document.getElementById("r0c6")
+
+const columnSevenClick = document.getElementById("r0c7")
+
+
+
+// moveCommit.forEach(column=> column.addEventListener('click', dropChip))
+
 
 
 /*----------------------------- Event Listeners -----------------------------*/
@@ -123,36 +136,55 @@ moveCommit.addEventListener('click', function(dropChip){
 /*-------------------------------- Functions --------------------------------*/
 init()
 function init(){
-  board = [null, null, null, null, null, null, null,
-          null, null, null, null, null, null, null,
-          null, null, null, null, null, null, null,
-          null, null, null, null, null, null, null,
-          null, null, null, null, null, null, null,
-          null, null, null, null, null, null, null,
-          null, null, null, null, null, null, null]
+  boardArray = [null, null, null, null, null, null, null,
+                null, null, null, null, null, null, null,
+                null, null, null, null, null, null, null,
+                null, null, null, null, null, null, null,
+                null, null, null, null, null, null, null,
+                null, null, null, null, null, null, null]
 
   playerTurn = 1
   winner = null
   messageEl.innerText = "player 1's turn"
+  render ()
 }
 
 function render (){
-
+  for (let i = 0; i < boardArray.length; i++){
+    if (boardArray[i]=== 1){
+      circles[i].style.background = "red"
+     }else if (boardArray[i] === -1)
+     circles[i].style.background= "black"
+  }
 }
+
+function handleClick(evt){
+  let cellIdx = parseInt(evt.target.id);
+  const correctIdx = checkPlacement(cellIdx);
+  boardArray[correctIdx] = playerTurn;
+  playerTurn *= -1
+  render()
+}
+
 function columnHighlight(evt){
 evt.target.style.background = "red"
 }
 
-function dropChip(){
-
+function checkPlacement(idx){
+  for (let i = idx + 35 ; i<= 41 && i>=0; i-=7){
+    if (boardArray[i] === null){
+      console.log(i)
+      return i;
+    }
+  }
 }
 
 function reset(){
 init()
 }
 
-// function playerTurn(){
-//   turn *= turn *-1
+
+
 // }
 
 
