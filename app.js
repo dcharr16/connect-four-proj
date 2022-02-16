@@ -101,7 +101,11 @@ playerTurn = 1
 /*------------------------ Cached Element References ------------------------*/
 const messageEl = document.getElementById("message")
 const circles = document.querySelectorAll(".circ")
-const columnSelect = document.querySelectorAll(".top-square")
+const columnSelect = document.querySelectorAll(".hover")
+
+const resetBtn = document.getElementById("reset-button") 
+
+resetBtn.addEventListener('click', init)
 
 columnSelect.forEach(column=> column.addEventListener("mouseover", columnHighlight))
 
@@ -120,10 +124,6 @@ const columnFiveClick = document.getElementById("r0c5")
 const columnSixClick = document.getElementById("r0c6")
 
 const columnSevenClick = document.getElementById("r0c7")
-
-
-
-// moveCommit.forEach(column=> column.addEventListener('click', dropChip))
 
 
 
@@ -154,11 +154,13 @@ function render (){
   getWinner()  
     if (boardArray[i]=== 1){
       circles[i].style.background = "red"
-     }else if (boardArray[i] === -1)
+     }else if (boardArray[i] === -1){
      circles[i].style.background= "black"
+    }else{
+      circles[i].style.background= "white"
+    }
   }
 }
-
 function handleClick(evt){
   let cellIdx = parseInt(evt.target.id);
   const correctIdx = checkPlacement(cellIdx);
@@ -185,7 +187,7 @@ function checkPlacement(idx){
     if (boardArray[i] === null){
       console.log(i)
       return i;
-    }
+  }
   }
 }
 
@@ -195,7 +197,7 @@ init()
 
 function getWinner(){
   winningCombos.forEach(combo=>{
-    if(Math.abs(boardArray[combo[0]] + boardArray[combo[1]] + boardArray[combo[2]]+ boardArray[combo[3]]) === 4){;
+    if(Math.abs(boardArray[combo[0]] + boardArray[combo[1]] + boardArray[combo[2]] + boardArray[combo[3]]) === 4){;
       if (playerTurn === 1){
         messageEl.innerText = "Player 2 Wins!"
         winner = 1
@@ -203,15 +205,16 @@ function getWinner(){
         messageEl.innerText = "Player 1 Wins!"
         winner = -1
       }
-      }else if(boardArray.every(circ => circ !== null)){
-        console.log("tie");
+      }else if(boardArray.every(circ => circ !== null) && !winner){
+        messageEl.innerText = "tie";
         winner = "t"
+
       
       }
   })
 }
 
-// }
+
 
 
 //Create a 7 x 6 grid 
