@@ -101,29 +101,25 @@ playerTurn = 1
 /*------------------------ Cached Element References ------------------------*/
 const messageEl = document.getElementById("message")
 const circles = document.querySelectorAll(".circ")
-const columnSelect = document.querySelectorAll(".hover")
-
 const resetBtn = document.getElementById("reset-button") 
 
 resetBtn.addEventListener('click', init)
 
-columnSelect.forEach(column=> column.addEventListener("mouseover", columnHighlight))
-
 circles.forEach(function(circle){circle.addEventListener("click", handleClick)});
 
-const columnOneClick = document.getElementById("r0c1")
+// const columnOneClick = document.getElementById("r0c1")
 
-const columnTwoClick = document.getElementById("r0c2")
+// const columnTwoClick = document.getElementById("r0c2")
 
-const columnThreeClick = document.getElementById("r0c3")
+// const columnThreeClick = document.getElementById("r0c3")
 
-const columnFourClick = document.getElementById("r0c4")
+// const columnFourClick = document.getElementById("r0c4")
 
-const columnFiveClick = document.getElementById("r0c5")
+// const columnFiveClick = document.getElementById("r0c5")
 
-const columnSixClick = document.getElementById("r0c6")
+// const columnSixClick = document.getElementById("r0c6")
 
-const columnSevenClick = document.getElementById("r0c7")
+// const columnSevenClick = document.getElementById("r0c7")
 
 
 
@@ -145,7 +141,7 @@ function init(){
 
   playerTurn = 1
   winner = null
-  messageEl.innerText = "player 1's turn"
+  messageEl.innerText = "Player 1's turn"
   render ()
 }
 
@@ -163,6 +159,13 @@ function render (){
 }
 function handleClick(evt){
   let cellIdx = parseInt(evt.target.id);
+  const topRow = [0,1,2,3,4,5,6]
+  if (topRow.includes(cellIdx)=== false){
+    return
+  }
+  if (boardArray[cellIdx]!== null){
+    return
+  }
   const correctIdx = checkPlacement(cellIdx);
   if(winner !==null){
     return
@@ -170,24 +173,20 @@ function handleClick(evt){
   boardArray[correctIdx] = playerTurn;
   playerTurn *= -1
   if(playerTurn === 1){
-    messageEl.innerText = "player 1's turn"
+    messageEl.innerText = "Player 1's turn"
   }
   if(playerTurn === -1){
-    messageEl.innerText = "player 2's turn"
+    messageEl.innerText = "Player 2's turn"
   }
   render()
 }
 
-function columnHighlight(evt){
-evt.target.style.background = "red"
-}
-
 function checkPlacement(idx){
-  for (let i = idx + 35 ; i<= 41 && i>=0; i-=7){
+  for (let i = idx + 35; i<= 41 && i>=0; i-=7){
     if (boardArray[i] === null){
       console.log(i)
       return i;
-  }
+    }
   }
 }
 
