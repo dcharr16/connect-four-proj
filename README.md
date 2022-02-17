@@ -3,8 +3,8 @@
 ### Objective: 
 In this game of strategy, two players take turns dropping their colored chips from the top of the row. Players will try to block and counter each other. First player to line up 4 of their chips either vertically, horizontally, or diagnally; WINS!
 
-### To play my game click here:
-
+### Game Deployment  
+To play the game click [HERE](https://dcharr16.github.io/connect-four-proj/)!
 
 ### Here is my inital wire-frame:  
 ![wire frame](imgs/wire%20frame%20for%20README.png)
@@ -13,7 +13,7 @@ In this game of strategy, two players take turns dropping their colored chips fr
 
 ![rendered game](imgs/C4%20for%20README.png)
 
-### Technologies used:
+### Technologies Used:
 - HTML
 - CSS
 - Javascript  
