@@ -24,4 +24,4 @@ To play the game click [HERE](https://dcharr16.github.io/connect-four-proj/)!
 - Implement chip drop animation
 - Change drop chip location to above the board
 - Add sound effects when resetting
-- AddDark mode
+- Add Dark Mode

@@ -112,7 +112,7 @@ function init(){
                 null, null, null, null, null, null, null]
   playerTurn = 1
   winner = null
-  messageEl.innerText = "Player 1's turn"
+  messageEl.innerText = "RED's turn"
   render ()
 }
 
@@ -145,10 +145,10 @@ function handleClick(evt){
   boardArray[correctIdx] = playerTurn;
   playerTurn *= -1
   if(playerTurn === 1){
-    messageEl.innerText = "Player 1's turn"
+    messageEl.innerText = "REDs turn"
   }
   if(playerTurn === -1){
-    messageEl.innerText = "Player 2's turn"
+    messageEl.innerText = "BLACKs turn"
   }
   render()
 }
@@ -170,14 +170,14 @@ function getWinner(){
   winningCombos.forEach(combo=>{
     if(Math.abs(boardArray[combo[0]] + boardArray[combo[1]] + boardArray[combo[2]] + boardArray[combo[3]]) === 4){
       if (playerTurn === 1){
-        messageEl.innerText = "Player 2 Wins!"
+        messageEl.innerText = "BLACK Wins!"
         winner = 1
       }else if (playerTurn === -1){
-        messageEl.innerText = "Player 1 Wins!"
+        messageEl.innerText = "RED Wins!"
         winner = -1
       }
       }else if(boardArray.every(circ => circ !== null) && !winner){
-        messageEl.innerText = "tie";
+        messageEl.innerText = "TIE!";
         winner = "t"      
       }
   })
