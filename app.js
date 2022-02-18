@@ -2,7 +2,7 @@
 
 
 const winningCombos = [
-//                       Rows
+// Rows
   [0,1,2,3],
   [1,2,3,4],
   [2,3,4,5],
@@ -89,16 +89,11 @@ const winningCombos = [
   [18, 24, 30, 36],
 ]
 
-
-
-/*-------------------------------- Variables --------------------------------*/
 let winner, 
 message, 
 boardArray, 
 playerTurn = 1
 
-
-/*------------------------ Cached Element References ------------------------*/
 const messageEl = document.getElementById("message")
 const circles = document.querySelectorAll(".circ")
 const resetBtn = document.getElementById("reset-button") 
@@ -107,29 +102,6 @@ resetBtn.addEventListener('click', init)
 
 circles.forEach(function(circle){circle.addEventListener("click", handleClick)});
 
-// const columnOneClick = document.getElementById("r0c1")
-
-// const columnTwoClick = document.getElementById("r0c2")
-
-// const columnThreeClick = document.getElementById("r0c3")
-
-// const columnFourClick = document.getElementById("r0c4")
-
-// const columnFiveClick = document.getElementById("r0c5")
-
-// const columnSixClick = document.getElementById("r0c6")
-
-// const columnSevenClick = document.getElementById("r0c7")
-
-
-
-/*----------------------------- Event Listeners -----------------------------*/
-
-
-
-
-
-/*-------------------------------- Functions --------------------------------*/
 init()
 function init(){
   boardArray = [null, null, null, null, null, null, null,
@@ -138,7 +110,6 @@ function init(){
                 null, null, null, null, null, null, null,
                 null, null, null, null, null, null, null,
                 null, null, null, null, null, null, null]
-
   playerTurn = 1
   winner = null
   messageEl.innerText = "Player 1's turn"
@@ -157,6 +128,7 @@ function render (){
     }
   }
 }
+
 function handleClick(evt){
   let cellIdx = parseInt(evt.target.id);
   const topRow = [0,1,2,3,4,5,6]
@@ -196,7 +168,7 @@ init()
 
 function getWinner(){
   winningCombos.forEach(combo=>{
-    if(Math.abs(boardArray[combo[0]] + boardArray[combo[1]] + boardArray[combo[2]] + boardArray[combo[3]]) === 4){;
+    if(Math.abs(boardArray[combo[0]] + boardArray[combo[1]] + boardArray[combo[2]] + boardArray[combo[3]]) === 4){
       if (playerTurn === 1){
         messageEl.innerText = "Player 2 Wins!"
         winner = 1
@@ -206,9 +178,7 @@ function getWinner(){
       }
       }else if(boardArray.every(circ => circ !== null) && !winner){
         messageEl.innerText = "tie";
-        winner = "t"
-
-      
+        winner = "t"      
       }
   })
 }
@@ -216,38 +186,3 @@ function getWinner(){
 
 
 
-//Create a 7 x 6 grid 
-//Create an array that represents the board
-//Field for game title
-//Track whose turn it is
-//Message for State of Game (winner, turn, draw)
-
-//init
-//Game title
-//Start of the game has empty board with player chips showing who goes first
-//Reset button on bottom of board
-
-
-//Cache items
-//Message (state of game/ celebratory/ field not available)
-//Click event listener for reset 
-// mouse over event listener for showing relative column to make move
-//Click event listener for making a move
-
-//Functions
-//Create game logic for tracking state of game (win, whose turn, draw)
-//Making a move and keep track of valid cells that can be populated
-
-
-
-//AAU
-//AAU the player will be greeted with a starting screen consisting of a board player 1 & 2 chip //representative
-
-//Will be instructed to place chip it top of board through a pulse highlighted indicator 
-
-//The chip will fall to the bottom most cell
-//Message  saying player 2’s turn will flash
-
-//Game play will continue as such until 4 chips of the same color are in a row. And message //stating who the winner is will appear (confetti?)
-
-//Reset button will then be clicked and the game will start over again
